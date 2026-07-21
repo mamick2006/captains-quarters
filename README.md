@@ -2,15 +2,14 @@
 
 # Captain's Quarters
 > The cat outranks you.
-> - Ship's tradition
 
-Design your cabin, on the Management screen. Furnish it with things you pick up in your travels: 72 furnishings, from a caff urn to a captured warlord banner to a grav-cat. Arrange them how you like, restyle the room, add decorative slots for the stuff that does nothing but look right.
+Design your cabin, on the Management screen. Furnish it with things you pick up in your travels, arrange them how you like, restyle the room, add decorative slots.
 
-Furnishings turn up in market stock, in old stations, in battle salvage, and as quest rewards. Slot one and it works for you: peak operating time on the ship you fly, salvage yield, sensor range, that sort of thing.
+Furnishings turn up in market stock, in old stations, in battle salvage, and as quest rewards.
 
 No required dependencies. Can be added to existing saves.
 
-Forum link: TODO (no thread yet; when it goes up, update this link and modThreadId in captains_quarters.version)
+Forum link: TODO
 
 ## Screenshots
 
