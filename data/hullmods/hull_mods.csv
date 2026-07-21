@@ -1,0 +1,2 @@
+name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hiddenEverywhere,cost_frigate,cost_dest,cost_cruiser,cost_capital,script,desc,short,sModDesc,sprite
+Quarters Effects,cq_quarters_effects,,,Captain's Quarters,"no_build_in,no_drop,no_drop_salvage,hide_in_codex",,,TRUE,TRUE,TRUE,0,0,0,0,cq.hullmods.CqQuartersHullmod,"Carries the piloted-ship bonuses of the captain's quarters furnishings.",,,graphics/cq/icons/cq_intel.png

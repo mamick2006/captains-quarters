@@ -1,0 +1,14 @@
+{
+  "id": "captains_quarters",
+  "name": "Captain's Quarters",
+  "author": "Mamick",
+  "utility": "false",
+  "version": "1.0.0",
+  "description": "Design your cabin, on the Management screen. Place various items and furnishings from your travels in your cabin! Furnishings turn up in market stock, in old stations, in battle salvage, and as quest rewards.",
+  "gameVersion": "0.98a-RC8",
+  "jars": [
+    "jars/CaptainsQuarters.jar"
+  ],
+  "dependencies": [],
+  "modPlugin": "cq.plugins.CqModPlugin"
+}

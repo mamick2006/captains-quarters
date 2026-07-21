@@ -1,0 +1,435 @@
+{
+	# ============================================================
+	# Captain's Quarters design-type lineage tint: a soft warm
+	# gold, cabin lamplight against the dark hull.
+	# ============================================================
+	"designTypeColors": {
+		"Captain's Quarters": [196, 168, 120, 255],
+	},
+
+	"plugins": {},
+
+	# ============================================================
+	# Sprite registry (the
+	# game preloads every registered sprite at launch). Categories:
+	#   "cq": the style backgrounds (1600x1000) and the
+	#         furnishing quarters sprites (each shipped at its
+	#         slot anchor rect size, transparent)
+	#   "cq_glyphs": the ten 32px slot glyphs, white on alpha,
+	#         tinted at runtime by the UI
+	#   "icons": the cq_intel entry icon and the twenty 80x80
+	#         cargo icons (the same files special_items.csv
+	#         references by path)
+	# ============================================================
+
+	"graphics": {
+		# The Management button's plate extension renders at RUNTIME from the game's own
+		# "ui"/"tripad_button_holder" sprite; no composed PNG ships.
+		"cq": {
+			"cq_bg_spacer": "graphics/cq/backgrounds/cq_bg_spacer.png",
+			"cq_bg_tritach": "graphics/cq/backgrounds/cq_bg_tritach.png",
+			# Styles 3 to 5: dedicated elevations.
+			"cq_bg_hegemony": "graphics/cq/backgrounds/cq_bg_hegemony.png",
+			"cq_bg_luddic": "graphics/cq/backgrounds/cq_bg_luddic.png",
+			"cq_bg_domain": "graphics/cq/backgrounds/cq_bg_domain.png",
+			"cq_f_berth_pad": "graphics/cq/furnishings/cq_f_berth_pad.png",
+			"cq_f_ease_field_berth": "graphics/cq/furnishings/cq_f_ease_field_berth.png",
+			"cq_f_recruitment_print": "graphics/cq/furnishings/cq_f_recruitment_print.png",
+			"cq_f_xiv_pennant": "graphics/cq/furnishings/cq_f_xiv_pennant.png",
+			"cq_f_grav_cat": "graphics/cq/furnishings/cq_f_grav_cat.png",
+			"cq_f_salvage_raven": "graphics/cq/furnishings/cq_f_salvage_raven.png",
+			"cq_f_herb_rack": "graphics/cq/furnishings/cq_f_herb_rack.png",
+			"cq_f_rose_bonsai": "graphics/cq/furnishings/cq_f_rose_bonsai.png",
+			"cq_f_tripad_dock": "graphics/cq/furnishings/cq_f_tripad_dock.png",
+			"cq_f_survey_cache": "graphics/cq/furnishings/cq_f_survey_cache.png",
+			"cq_f_medal_rack": "graphics/cq/furnishings/cq_f_medal_rack.png",
+			"cq_f_remnant_facet": "graphics/cq/furnishings/cq_f_remnant_facet.png",
+			"cq_f_deck_mat": "graphics/cq/furnishings/cq_f_deck_mat.png",
+			"cq_f_kumari_rug": "graphics/cq/furnishings/cq_f_kumari_rug.png",
+			"cq_f_lume_candles": "graphics/cq/furnishings/cq_f_lume_candles.png",
+			"cq_f_lumen_shard": "graphics/cq/furnishings/cq_f_lumen_shard.png",
+			"cq_f_caff_urn": "graphics/cq/furnishings/cq_f_caff_urn.png",
+			"cq_f_drinks_cabinet": "graphics/cq/furnishings/cq_f_drinks_cabinet.png",
+			"cq_f_songbook_chips": "graphics/cq/furnishings/cq_f_songbook_chips.png",
+			"cq_f_strategikon": "graphics/cq/furnishings/cq_f_strategikon.png",
+			# Catalog rows 21 to 50: dedicated sprites.
+			"cq_f_gel_mattress": "graphics/cq/furnishings/cq_f_gel_mattress.png",
+			"cq_f_officers_rack": "graphics/cq/furnishings/cq_f_officers_rack.png",
+			"cq_f_cryofoam_bunk": "graphics/cq/furnishings/cq_f_cryofoam_bunk.png",
+			"cq_f_path_triptych": "graphics/cq/furnishings/cq_f_path_triptych.png",
+			"cq_f_kill_marks": "graphics/cq/furnishings/cq_f_kill_marks.png",
+			"cq_f_warlord_banner": "graphics/cq/furnishings/cq_f_warlord_banner.png",
+			"cq_f_hull_rat_cage": "graphics/cq/furnishings/cq_f_hull_rat_cage.png",
+			"cq_f_cyber_parrot": "graphics/cq/furnishings/cq_f_cyber_parrot.png",
+			"cq_f_agravifish_bowl": "graphics/cq/furnishings/cq_f_agravifish_bowl.png",
+			"cq_f_antixenol_planter": "graphics/cq/furnishings/cq_f_antixenol_planter.png",
+			"cq_f_prayer_garden": "graphics/cq/furnishings/cq_f_prayer_garden.png",
+			"cq_f_reef_terrarium": "graphics/cq/furnishings/cq_f_reef_terrarium.png",
+			"cq_f_chart_table": "graphics/cq/furnishings/cq_f_chart_table.png",
+			"cq_f_ephemeris": "graphics/cq/furnishings/cq_f_ephemeris.png",
+			"cq_f_slate_rack": "graphics/cq/furnishings/cq_f_slate_rack.png",
+			"cq_f_sample_case": "graphics/cq/furnishings/cq_f_sample_case.png",
+			"cq_f_vambrace_fragment": "graphics/cq/furnishings/cq_f_vambrace_fragment.png",
+			"cq_f_warlord_sidearm": "graphics/cq/furnishings/cq_f_warlord_sidearm.png",
+			"cq_f_insulfiber_carpet": "graphics/cq/furnishings/cq_f_insulfiber_carpet.png",
+			"cq_f_deck_quilt": "graphics/cq/furnishings/cq_f_deck_quilt.png",
+			"cq_f_ash_silk_rug": "graphics/cq/furnishings/cq_f_ash_silk_rug.png",
+			"cq_f_glowpanel": "graphics/cq/furnishings/cq_f_glowpanel.png",
+			"cq_f_desk_lamp": "graphics/cq/furnishings/cq_f_desk_lamp.png",
+			"cq_f_signal_lamp": "graphics/cq/furnishings/cq_f_signal_lamp.png",
+			"cq_f_prize_still": "graphics/cq/furnishings/cq_f_prize_still.png",
+			"cq_f_lobster_tank": "graphics/cq/furnishings/cq_f_lobster_tank.png",
+			"cq_f_darjeeling_service": "graphics/cq/furnishings/cq_f_darjeeling_service.png",
+			"cq_f_arms_catalog": "graphics/cq/furnishings/cq_f_arms_catalog.png",
+			"cq_f_holo_chess": "graphics/cq/furnishings/cq_f_holo_chess.png",
+			"cq_f_muse_cabinet": "graphics/cq/furnishings/cq_f_muse_cabinet.png",
+			# The quest specials: dedicated sprites.
+			"cq_f_guard_saber": "graphics/cq/furnishings/cq_f_guard_saber.png",
+			"cq_f_amber_motes": "graphics/cq/furnishings/cq_f_amber_motes.png",
+			"cq_f_janus_casing": "graphics/cq/furnishings/cq_f_janus_casing.png",
+			"cq_f_pilgrim_icon": "graphics/cq/furnishings/cq_f_pilgrim_icon.png",
+			"cq_f_bornanew_reliquary": "graphics/cq/furnishings/cq_f_bornanew_reliquary.png",
+			"cq_f_rao_invitation": "graphics/cq/furnishings/cq_f_rao_invitation.png",
+			"cq_f_inert_trigger": "graphics/cq/furnishings/cq_f_inert_trigger.png",
+			"cq_f_kallichore_plate": "graphics/cq/furnishings/cq_f_kallichore_plate.png",
+			"cq_f_kanta_marker": "graphics/cq/furnishings/cq_f_kanta_marker.png",
+			"cq_f_survey_slab": "graphics/cq/furnishings/cq_f_survey_slab.png",
+			# The unique/guaranteed/thematic specials: dedicated sprites.
+			"cq_f_megalobster_tank": "graphics/cq/furnishings/cq_f_megalobster_tank.png",
+			"cq_f_parade_standard": "graphics/cq/furnishings/cq_f_parade_standard.png",
+			"cq_f_signet_case": "graphics/cq/furnishings/cq_f_signet_case.png",
+			"cq_f_neural_soother": "graphics/cq/furnishings/cq_f_neural_soother.png",
+			"cq_f_reliquary_lamp": "graphics/cq/furnishings/cq_f_reliquary_lamp.png",
+			"cq_f_tesseract_cluster": "graphics/cq/furnishings/cq_f_tesseract_cluster.png",
+			"cq_f_chart_core": "graphics/cq/furnishings/cq_f_chart_core.png",
+			"cq_f_nexus_shard": "graphics/cq/furnishings/cq_f_nexus_shard.png",
+			"cq_f_sample_carousel": "graphics/cq/furnishings/cq_f_sample_carousel.png",
+			"cq_f_lockbox": "graphics/cq/furnishings/cq_f_lockbox.png",
+			"cq_f_bookends": "graphics/cq/furnishings/cq_f_bookends.png",
+			"cq_f_vine_basket": "graphics/cq/furnishings/cq_f_vine_basket.png",
+		},
+		"cq_glyphs": {
+			"cq_slot_bunk": "graphics/cq/glyphs/cq_slot_bunk.png",
+			"cq_slot_wall": "graphics/cq/glyphs/cq_slot_wall.png",
+			"cq_slot_pet": "graphics/cq/glyphs/cq_slot_pet.png",
+			"cq_slot_plant": "graphics/cq/glyphs/cq_slot_plant.png",
+			"cq_slot_desk": "graphics/cq/glyphs/cq_slot_desk.png",
+			"cq_slot_display": "graphics/cq/glyphs/cq_slot_display.png",
+			"cq_slot_rug": "graphics/cq/glyphs/cq_slot_rug.png",
+			"cq_slot_light": "graphics/cq/glyphs/cq_slot_light.png",
+			"cq_slot_galley": "graphics/cq/glyphs/cq_slot_galley.png",
+			"cq_slot_ent": "graphics/cq/glyphs/cq_slot_ent.png",
+		},
+		"icons": {
+			"cq_intel": "graphics/cq/icons/cq_intel.png",
+			"cq_icon_berth_pad": "graphics/cq/icons/cq_icon_berth_pad.png",
+			"cq_icon_ease_field_berth": "graphics/cq/icons/cq_icon_ease_field_berth.png",
+			"cq_icon_recruitment_print": "graphics/cq/icons/cq_icon_recruitment_print.png",
+			"cq_icon_xiv_pennant": "graphics/cq/icons/cq_icon_xiv_pennant.png",
+			"cq_icon_grav_cat": "graphics/cq/icons/cq_icon_grav_cat.png",
+			"cq_icon_salvage_raven": "graphics/cq/icons/cq_icon_salvage_raven.png",
+			"cq_icon_herb_rack": "graphics/cq/icons/cq_icon_herb_rack.png",
+			"cq_icon_rose_bonsai": "graphics/cq/icons/cq_icon_rose_bonsai.png",
+			"cq_icon_tripad_dock": "graphics/cq/icons/cq_icon_tripad_dock.png",
+			"cq_icon_survey_cache": "graphics/cq/icons/cq_icon_survey_cache.png",
+			"cq_icon_medal_rack": "graphics/cq/icons/cq_icon_medal_rack.png",
+			"cq_icon_remnant_facet": "graphics/cq/icons/cq_icon_remnant_facet.png",
+			"cq_icon_deck_mat": "graphics/cq/icons/cq_icon_deck_mat.png",
+			"cq_icon_kumari_rug": "graphics/cq/icons/cq_icon_kumari_rug.png",
+			"cq_icon_lume_candles": "graphics/cq/icons/cq_icon_lume_candles.png",
+			"cq_icon_lumen_shard": "graphics/cq/icons/cq_icon_lumen_shard.png",
+			"cq_icon_caff_urn": "graphics/cq/icons/cq_icon_caff_urn.png",
+			"cq_icon_drinks_cabinet": "graphics/cq/icons/cq_icon_drinks_cabinet.png",
+			"cq_icon_songbook_chips": "graphics/cq/icons/cq_icon_songbook_chips.png",
+			"cq_icon_strategikon": "graphics/cq/icons/cq_icon_strategikon.png",
+		},
+	},
+
+	# Cargo icons beyond the twenty registered above need no registry entries:
+	# special_items.csv references each icon file by PATH directly.
+
+	# ============================================================
+	# Acquisition (the LunaSettings.csv rows
+	# mirror the five player-tunable knobs, these values as the
+	# no-LunaLib defaults).
+	# ============================================================
+
+	# Market stock: per-submarket carry chance at size 5, scaled
+	# by size: clamp(1 + step * (size-5), min, max). One
+	# furnishing per market at a time; exceptionals never appear
+	# in markets.
+	"cq_market_chance": 0.60,
+	"cq_market_size_step": 0.10,
+	"cq_market_size_min": 0.70,
+	"cq_market_size_max": 1.30,
+
+	# Scavenging: chance that a special location holds one
+	# furnishing among its salvage; attached as DropData to
+	# discovered entities of these types.
+	"cq_salvage_chance": 0.30,
+	"cq_salvage_entity_types": [
+		"station_research",
+		"station_research_remnant",
+		"station_mining",
+		"station_mining_remnant",
+		"orbital_habitat",
+	],
+
+	# Post-battle salvage: chance = min(1, destroyed enemy
+	# fleet points * per_fp); per_fp is 1/105, so the 105 FP
+	# reference battle (a capital, 2 cruisers, 3 destroyers, 4
+	# frigates) reaches CERTAINTY and the curve saturates there.
+	# There is no cap key and no owned-weight dampening
+	# key: acquisition is collection-aware in every channel
+	# (owned picks substitute to an unowned same-rarity item;
+	# an exhausted rarity drops nothing).
+	"cq_battle_chance_per_fp": 0.00952381,
+
+	# Rarity weights, applied inside every channel pool.
+	"cq_rarity_weight_common": 1.0,
+	"cq_rarity_weight_uncommon": 0.55,
+	"cq_rarity_weight_rare": 0.30,
+	"cq_rarity_weight_exceptional": 0.12,
+
+	# ============================================================
+	# Slot economy: you
+	# start with the initial count and buy one slot per ladder
+	# step, in order, to the max. Cumulative
+	# 8,885,000 for all ten.
+	# LunaLib mirrors each step as cq_slot_price_1 to _10.
+	# ============================================================
+	"cq_slot_initial_count": 5,
+	"cq_slot_max_count": 15,
+	"cq_slot_prices": [5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000],
+
+	# ============================================================
+	# Sticker scale:
+	# +/- steps a placed sticker's scale; min/max are the binding
+	# bounds. Placement is center-in-image; overhang crops at the
+	# image edge. Cosmetic only; effects
+	# never change with size.
+	# ============================================================
+	"cq_sticker_scale_step": 0.10,
+	"cq_sticker_scale_min": 0.5,
+	"cq_sticker_scale_max": 2.0,
+
+	# Sticker rotation: degrees per CW/CCW press; 30 = 12
+	# steps per circle. The model persists the
+	# STEP COUNT, normalized into one circle; flip needs no key.
+	# (There is no carry key: the Move button carries
+	# the lift verb on the vanilla shortcut convention, so no key
+	# name ships anywhere.)
+	"cq_rotate_step_degrees": 30,
+
+	# Decorative slots: dupes allowed, ZERO effect
+	# participation, always the front z-band. Bought flat,
+	# cq_decorative_slot_price each, up to the cap (all twenty
+	# cost 200,000, about 2.3% of the effect ladder).
+	"cq_decorative_slot_max": 20,
+	"cq_decorative_slot_price": 10000,
+
+	# ============================================================
+	# Difficulty: ONE global
+	# effect multiplier at the CqEffects choke point; catalog
+	# magnitudes stay Default-canonical (the 1.0x base) and every
+	# display shows the effective value through the same accessor.
+	# Default is the default. LunaLib Radio cq_difficulty overrides the
+	# default live; an absent or unknown value reads Default.
+	# ============================================================
+	"cq_difficulty_default": "default",
+	"cq_difficulty_effect_mult_survival": 0.5,
+	"cq_difficulty_effect_mult_default": 1.0,
+	"cq_difficulty_effect_mult_story": 2.0,
+
+	# ============================================================
+	# Per-item magnitudes.
+	#
+	# Key scheme: item id cq_<slug> takes cq_item_<slug>_mag; the
+	# two dual-effect items add _mag2. _mag holds the budget-
+	# priced quantity (for capped supply/fuel furnishings that is
+	# the monthly CAP); those capped items carry
+	# their percentage rider in _pct (and _pct2), which sizes the
+	# effect for small fleets while the cap holds the budget.
+	# ============================================================
+
+	# Bunk (peak operating time / CR decay / own weapon and wing recovery)
+	"cq_item_berth_pad_mag": 15,        # +15 s peak operating time
+	"cq_item_gel_mattress_mag": 5,      # -5% CR degradation after peak
+	"cq_item_officers_rack_mag": 10,        # +10% chance to recover own weapons and wings
+	"cq_item_cryofoam_bunk_mag": 10,    # +10% CR recovery rate, per member
+	"cq_item_ease_field_berth_mag": 30,  # +30 s peak operating time
+
+	# Wall art (ground operations / marine casualties)
+	"cq_item_recruitment_print_mag": 10, # +10% ground operations effectiveness
+	"cq_item_path_triptych_mag": 20,     # +20 effective marines for ground operations
+	"cq_item_kill_marks_mag": 8,      # -8% marine casualties
+	"cq_item_warlord_banner_mag": 6,     # +6% top speed, piloted (the hunted ship runs)
+	"cq_item_xiv_pennant_mag": 25,       # +25% ground operations effectiveness
+
+	# Pet (crew losses / salvage spotting)
+	"cq_item_hull_rat_cage_mag": 10,        # -10% crew lost to hull damage (piloted)
+	"cq_item_grav_cat_mag": 15,        # -15% non-combat crew losses
+	"cq_item_cyber_parrot_mag": 15,    # -15% crew lost in combat (piloted)
+	"cq_item_agravifish_bowl_mag": 7,       # -7% overload duration, piloted
+	"cq_item_salvage_raven_mag": 20,   # +20% salvage resources (not rare items)
+
+	# Plant (supply and fuel upkeep; percentages capped)
+	"cq_item_herb_rack_mag": 20,        # cap: up to -20 supplies/mo
+	"cq_item_herb_rack_pct": 8,         # -8% fleet supply use
+	"cq_item_antixenol_planter_mag": 5,  # +5% CR recovery rate, per member
+	"cq_item_prayer_garden_mag": 11,    # +11% maximum combat readiness of recovered ships
+	"cq_item_rose_bonsai_mag": 20,      # +20% maneuverability, piloted
+	"cq_item_reef_terrarium_mag": 25,   # cap: up to -25 supplies/mo
+	"cq_item_reef_terrarium_pct": 10,   # -10% fleet supply use
+	"cq_item_reef_terrarium_mag2": 5,   # cap: up to -5 fuel/mo
+	"cq_item_reef_terrarium_pct2": 8,   # -8% fleet fuel use
+
+	# Desk (navigation / surveying)
+	"cq_item_chart_table_mag": 6,     # -6% terrain movement penalty
+	"cq_item_tripad_dock_mag": 10,    # -10% survey costs
+	"cq_item_ephemeris_mag": 15,      # +15% maneuverability, piloted (the helm checks it first)
+	"cq_item_slate_rack_mag": 7,      # -7% weapon recoil, piloted
+	"cq_item_survey_cache_mag": 20,   # -20% survey costs
+
+	# Display case (post-battle salvage / recovered-ship condition)
+	"cq_item_medal_rack_mag": 5,       # +5% post-battle salvage
+	"cq_item_sample_case_mag": 8,      # +8% maximum hull of recovered ships
+	"cq_item_vambrace_fragment_mag": 12,        # +12% maximum hull of recovered ships
+	"cq_item_warlord_sidearm_mag": 12, # +12% maximum combat readiness of recovered ships
+	"cq_item_remnant_facet_mag": 8,    # +8% post-battle salvage
+
+	# Rug (sensor profile / EMP taken / corona resistance)
+	"cq_item_deck_mat_mag": 5,       # -5% detected-at range
+	"cq_item_insulfiber_carpet_mag": 10,    # -10% detectability while running dark
+	"cq_item_kumari_rug_mag": 16,      # -16% EMP damage taken, piloted
+	"cq_item_deck_quilt_mag": 22,    # -22% CR lost to coronas and storms, per member
+	"cq_item_ash_silk_rug_mag": 30,  # -30% CR lost to coronas and storms, per member
+
+	# Lighting (sensor range / watch quality)
+	"cq_item_lume_candles_mag": 5,   # +5% sensor range
+	"cq_item_glowpanel_mag": 6,      # cap: up to -6 fuel (a lower draw on the bus)
+	"cq_item_glowpanel_pct": 5,      # -5% fleet fuel use
+	"cq_item_desk_lamp_mag": 1,      # +1 to the "moving slowly" burn threshold
+	"cq_item_signal_lamp_mag": 8,    # -8% weapon recoil, piloted (the gunnery-drill lamp)
+	"cq_item_lumen_shard_mag": 10,   # +10% sensor range
+
+	# Galley nook (repair rate / own weapon and wing recovery)
+	"cq_item_caff_urn_mag": 10,        # +10% out-of-combat repair rate
+	"cq_item_prize_still_mag": 6,      # +6% chance to recover own weapons and wings
+	"cq_item_drinks_cabinet_mag": 1,   # +1 maximum contacts (a bottle from every port)
+	"cq_item_lobster_tank_mag": 4,     # +4% flux capacity, piloted (the upsized power trunk)
+	"cq_item_darjeeling_service_mag": 12,      # +12% out-of-combat repair rate
+	"cq_item_darjeeling_service_mag2": 5,      # +5% of hull/armor damage repaired instantly after battle
+
+	# Entertainment (officer experience / command point recovery / production planning)
+	"cq_item_songbook_chips_mag": 6,   # +6% officer experience gain
+	"cq_item_arms_catalog_mag": 10,    # +10% maximum monthly custom production
+	"cq_item_holo_chess_mag": 15,      # +15% command point recovery rate (the undefeated XO)
+	"cq_item_strategikon_mag": 20,     # +20% command point recovery rate
+	"cq_item_muse_cabinet_mag": 15,    # +15% officer experience gain
+
+	# The QUEST specials (granted once by the quest poll, never dropped).
+	"cq_item_guard_saber_mag": 10,        # -10% marine casualties
+	"cq_item_amber_motes_mag": 7,         # +7% top speed, piloted (drive-field motes)
+	"cq_item_janus_casing_mag": 45,       # -45% Emergency Burn CR cost
+	"cq_item_pilgrim_icon_mag": 10,       # +10% fuel salvaged
+	"cq_item_bornanew_reliquary_mag": 10, # -10% overload duration, piloted
+	"cq_item_rao_invitation_mag": 1,      # +1 maximum contacts
+	"cq_item_inert_trigger_mag": 22,      # -22% EMP damage taken (piloted)
+	"cq_item_kallichore_plate_mag": 1,    # +1 moving-slowly burn threshold (SILENCE)
+	"cq_item_kanta_marker_mag": 35,       # -35% Emergency Burn CR cost (the Den's roads)
+	"cq_item_survey_slab_mag": 4,         # +4% flux dissipation (piloted)
+
+	# The remaining specials: 5 UNIQUE, 3 GUARANTEED, 4 THEMATIC.
+	"cq_item_megalobster_tank_mag": 15,   # -15% crew lost in combat (piloted)
+	"cq_item_megalobster_tank_mag2": 10,  # -10% non-combat crew losses
+	"cq_item_parade_standard_mag": 20,    # -20% crew lost to hull damage (piloted)
+	"cq_item_signet_case_mag": 20,        # +20% maximum monthly custom production
+	"cq_item_neural_soother_mag": 10,     # -10% CR degradation after peak (piloted)
+	"cq_item_reliquary_lamp_mag": 10,     # -10% detected-at range
+	"cq_item_tesseract_cluster_mag": 1,   # recovered ships have 1 fewer d-mod (integer-rounded)
+	"cq_item_chart_core_mag": 14,         # -14% terrain movement penalty
+	"cq_item_nexus_shard_mag": 12,        # +12% hull/armor damage repaired instantly after battle
+	"cq_item_sample_carousel_mag": 15,    # +15% salvage resources (not rare items)
+	"cq_item_lockbox_mag": 27,            # +27 effective marines for ground operations
+	"cq_item_bookends_mag": 6,            # +6% fuel salvaged (the assay reading)
+	"cq_item_vine_basket_mag": 15,        # -15% detectability while running dark
+
+	# The unique home markets (one specific market stocks the item on the market
+	# channel's normal cadence and odds; owned = never stocked again, and the home's
+	# furnishing slot goes quiet, never a general-pool substitute).
+	"cq_item_megalobster_tank_home": "volturn",
+	"cq_item_parade_standard_home": "chicomoztoc",
+	"cq_item_signet_case_home": "kazeron",
+	"cq_item_neural_soother_home": "eochu_bres",
+	"cq_item_reliquary_lamp_home": "gilead",
+
+	# The guaranteed sources (drops with certainty at its source IF unowned, else
+	# nothing). Keys are an entity type (the mothership, seeded as a salvage table) or a base
+	# hull id among a defeated fleet's casualties (the battle listener grants it).
+	"cq_guaranteed_sources": {
+		"tesseract": "tesseract_cluster",
+		"derelict_mothership": "chart_core",
+		"remnant_station2": "nexus_shard",
+	},
+
+	# The thematic locations (each special joins that location type's salvage pool at
+	# normal odds, collection-aware like everything). Entity type to item slug; the cache
+	# types are thematic-only locations, so they roll a pool of exactly the lockbox.
+	"cq_thematic_sources": {
+		"station_research": "sample_carousel",
+		"station_research_remnant": "sample_carousel",
+		"station_mining": "bookends",
+		"station_mining_remnant": "bookends",
+		"orbital_habitat": "vine_basket",
+		"equipment_cache": "lockbox",
+		"equipment_cache_small": "lockbox",
+	},
+
+	# The quest-reward bindings: durable completion flag to item slug. The
+	# poll checks each flag in sector AND character memory (Kanta's lives in character data);
+	# Red Planet has no flag at all and is detected in code (PlanetaryShieldIntel DONE).
+	"cq_quest_rewards": {
+		"$sdtu_missionCompleted": "guard_saber",
+		"$defeatedZiggurat": "amber_motes",
+		"$gaATG_missionCompleted": "janus_casing",
+		"$lpp_missionCompleted": "pilgrim_icon",
+		"$bffi_missionCompleted": "bornanew_reliquary",
+		"$didEventideRaoBall": "rao_invitation",
+		"$pk_recovered": "inert_trigger",
+		"$gaKA_missionCompleted": "kallichore_plate",
+		"$everHadKantaProtection": "kanta_marker",
+	},
+
+	# ============================================================
+	# MIGRATION MAP ONLY: [x, y, w, h] rects in the
+	# 1600x1000 frame, x and y from top-left. Read solely by the
+	# version-1 save migration, which places each old typed slot's
+	# occupant as a sticker at its anchor's top-left; nothing else
+	# consumes these, and the table is FROZEN at the two version-1
+	# styles (future styles ship no anchors).
+	# Measured against the shipped elevation backgrounds.
+	# ============================================================
+
+	"cq_style_spacer_anchor_light":   [620, 15, 240, 170],
+	"cq_style_spacer_anchor_wall":    [300, 200, 260, 210],
+	"cq_style_spacer_anchor_display": [760, 200, 220, 260],
+	"cq_style_spacer_anchor_ent":     [1010, 180, 250, 200],
+	"cq_style_spacer_anchor_plant":   [250, 600, 150, 210],
+	"cq_style_spacer_anchor_galley":  [1350, 540, 220, 280],
+	"cq_style_spacer_anchor_bunk":    [440, 530, 480, 310],
+	"cq_style_spacer_anchor_desk":    [980, 520, 360, 270],
+	"cq_style_spacer_anchor_pet":     [1400, 840, 180, 150],
+	"cq_style_spacer_anchor_rug":     [920, 800, 430, 190],
+
+	"cq_style_tritach_anchor_light":   [640, 10, 240, 170],
+	"cq_style_tritach_anchor_wall":    [380, 190, 260, 210],
+	"cq_style_tritach_anchor_display": [700, 190, 220, 260],
+	"cq_style_tritach_anchor_ent":     [860, 470, 250, 200],
+	"cq_style_tritach_anchor_plant":   [600, 590, 150, 210],
+	"cq_style_tritach_anchor_galley":  [1380, 540, 220, 280],
+	"cq_style_tritach_anchor_bunk":    [90, 490, 480, 310],
+	"cq_style_tritach_anchor_desk":    [1000, 680, 360, 270],
+	"cq_style_tritach_anchor_pet":     [620, 830, 180, 150],
+	"cq_style_tritach_anchor_rug":     [100, 810, 430, 190],
+}
