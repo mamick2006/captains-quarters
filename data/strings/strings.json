@@ -90,7 +90,15 @@
     "mgmt_zback_at_back": "Already at the back.",
     "mgmt_style_current_tip": "The current style.",
     "mgmt_style_refit_tip": "Refit the cabin in the %s style. Your furnishings stay where they are.",
-    "mgmt_sticker_tip": "Click to select. Move picks it up and sets it down."
+    "mgmt_sticker_tip": "Click to select. Move picks it up and sets it down.",
+    "mgmt_layout_save_tip": "Saves the cabin as layout %s, overwriting it.",
+    "mgmt_layout_load_tip": "Replaces the cabin with saved layout %s.",
+    "mgmt_layout_empty": "Nothing is saved in this layout.",
+    "mgmt_layout_save_nothing": "The cabin has no furnishings.",
+    "mgmt_layout_missing_entry": "%s is no longer available and will be skipped.",
+    "mgmt_layout_missing_slot": "%s has no slot to return to and will be skipped.",
+    "mgmt_layout_style_note": "Refits the cabin in the %s style.",
+    "mgmt_layout_more": "And %s more furnishings."
   },
   "cq_intel": {
     "intel_status": "%s of %s slots furnished",

@@ -1,3 +1,10 @@
+v1.0.2
+Save compatible. Can be added to existing saves.
+
+- You can now save and load three cabin layouts, to make switching easier.
+- Added support for other mods adding their own furnishings. See MODDING.md.
+- Hovering a greyed-out button now says why it is unavailable.
+
 v1.0.1
 Save compatible. Can be added to existing saves.
 
