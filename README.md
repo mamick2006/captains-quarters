@@ -9,7 +9,7 @@ Furnishings turn up in market stock, in old stations, in battle salvage, and as 
 
 No required dependencies. Can be added to existing saves.
 
-Forum link: TODO
+[Forum link](https://fractalsoftworks.com/forum/index.php?topic=35860.0)
 
 ## Screenshots
 
