@@ -1,3 +1,19 @@
+v2.0.0
+Not save compatible with previous versions of the mod. Can be added to existing saves.
+
+- Updated for Starsector 0.98.5a.
+- Completely redesigned and rebalanced all furnishing effects. Made them universally more interesting, useful, varied, and fixed bugs.
+- Completely redesigned UI.
+- Furnishings are found more often when salvaging stations (50% instead of 30%).
+- Fixed finishing Red Planet never giving the Red Planet Survey Slab.
+- The Manage button no longer overrides your own keybinding for Y.
+- Added a setting for the Manage shortcut key.
+- Added Survival Mode support. Furnishings are half as likely to turn up in markets, salvage and battles, and a new setting can turn this off.
+- Added an Auto difficulty and made it the default. It is Survival in a Survival Mode game, and Normal otherwise.
+- Fixed the Add slot tooltip listing the default slot prices instead of the ones set in LunaLib.
+- Redrew the furnishings that were at a different angle from the rest.
+- jars directory now has the zipped source code
+
 v1.0.2
 Save compatible. Can be added to existing saves.
 

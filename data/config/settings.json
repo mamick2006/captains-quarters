@@ -9,12 +9,16 @@
 
 	"plugins": {},
 
+	# The Manage button's shortcut key as an LWJGL key code (21 is Y, 0 is none), for a
+	# game without LunaLib. The LunaLib row of the same name overrides it.
+	"cq_mgmt_key": 21,
+
 	# ============================================================
 	# Sprite registry (the
 	# game preloads every registered sprite at launch). Categories:
 	#   "cq": the style backgrounds (1600x1000) and the
-	#         furnishing quarters sprites (each shipped at its
-	#         slot anchor rect size, transparent)
+	#         furnishing quarters sprites (each at its
+	#         category's sticker size, transparent)
 	#   "cq_glyphs": the ten 32px slot glyphs, white on alpha,
 	#         tinted at runtime by the UI
 	#   "icons": the cq_intel entry icon and the twenty 80x80
@@ -166,7 +170,7 @@
 	# Scavenging: chance that a special location holds one
 	# furnishing among its salvage; attached as DropData to
 	# discovered entities of these types.
-	"cq_salvage_chance": 0.30,
+	"cq_salvage_chance": 0.50,
 	"cq_salvage_entity_types": [
 		"station_research",
 		"station_research_remnant",
@@ -176,8 +180,8 @@
 	],
 
 	# Post-battle salvage: chance = min(1, destroyed enemy
-	# fleet points * per_fp); per_fp is 1/105, so the 105 FP
-	# reference battle (a capital, 2 cruisers, 3 destroyers, 4
+	# fleet points * per_fp); per_fp is 1/105, so a 105 FP
+	# battle (a capital, 2 cruisers, 3 destroyers, 4
 	# frigates) reaches CERTAINTY and the curve saturates there.
 	# There is no cap key and no owned-weight dampening
 	# key: acquisition is collection-aware in every channel
@@ -230,130 +234,152 @@
 
 	# ============================================================
 	# Difficulty: ONE global
-	# effect multiplier at the CqEffects choke point; catalog
-	# magnitudes stay Default-canonical (the 1.0x base) and every
-	# display shows the effective value through the same accessor.
-	# Default is the default. LunaLib Radio cq_difficulty overrides the
-	# default live; an absent or unknown value reads Default.
+	# effect multiplier over every furnishing effect; catalog
+	# magnitudes stay Normal-canonical (the 1.0x base) and every
+	# display shows the effective value.
+	# Auto is the default: Survival in a Survival Mode game, Normal
+	# otherwise. LunaLib Radio cq_difficulty overrides the
+	# default live; an absent or unknown value reads Auto.
 	# ============================================================
-	"cq_difficulty_default": "default",
+	"cq_difficulty_default": "auto",
 	"cq_difficulty_effect_mult_survival": 0.5,
-	"cq_difficulty_effect_mult_default": 1.0,
+	"cq_difficulty_effect_mult_normal": 1.0,
 	"cq_difficulty_effect_mult_story": 2.0,
+
+	# Defaults for the LunaLib checkboxes of the same keys, read when LunaLib is not installed.
+	"cq_mgmt_intel_only": false,
+	"cq_survival_finds": true,
 
 	# ============================================================
 	# Per-item magnitudes.
 	#
 	# Key scheme: item id cq_<slug> takes cq_item_<slug>_mag; the
-	# two dual-effect items add _mag2. _mag holds the budget-
-	# priced quantity (for capped supply/fuel furnishings that is
-	# the monthly CAP); those capped items carry
-	# their percentage rider in _pct (and _pct2), which sizes the
-	# effect for small fleets while the cap holds the budget.
+	# one dual-effect item adds _mag2. For a capped effect
+	# _mag is the CAP (fuel
+	# or supplies, credits of tariff refunded a month, crew or marines per
+	# battle or raid), and the item carries its percentage in
+	# _pct. The occasion a furnishing pays on is not a number
+	# here: it is the when and arg cells of its row in
+	# data/config/cq/cq_furnishings.csv, and the difficulty
+	# setting never scales it.
 	# ============================================================
 
-	# Bunk (peak operating time / CR decay / own weapon and wing recovery)
-	"cq_item_berth_pad_mag": 15,        # +15 s peak operating time
-	"cq_item_gel_mattress_mag": 5,      # -5% CR degradation after peak
-	"cq_item_officers_rack_mag": 10,        # +10% chance to recover own weapons and wings
-	"cq_item_cryofoam_bunk_mag": 10,    # +10% CR recovery rate, per member
-	"cq_item_ease_field_berth_mag": 30,  # +30 s peak operating time
+	# Bunk (the piloted ship, on an occasion inside a battle)
+	"cq_item_berth_pad_mag": 7,         # +7% top speed for the first 60 seconds of battle
+	"cq_item_gel_mattress_mag": 12,     # -12% armor damage taken in a battle against a larger enemy force
+	"cq_item_officers_rack_mag": 7,     # -7% damage taken by shields in a battle against a larger enemy force
+	"cq_item_cryofoam_bunk_mag": 5,     # time passes 5% faster for the first 60 seconds of battle
+	"cq_item_ease_field_berth_mag": 7,  # +7% ballistic and energy weapon range once peak operating time has run out
 
-	# Wall art (ground operations / marine casualties)
-	"cq_item_recruitment_print_mag": 10, # +10% ground operations effectiveness
-	"cq_item_path_triptych_mag": 20,     # +20 effective marines for ground operations
-	"cq_item_kill_marks_mag": 8,      # -8% marine casualties
-	"cq_item_warlord_banner_mag": 6,     # +6% top speed, piloted (the hunted ship runs)
-	"cq_item_xiv_pennant_mag": 25,       # +25% ground operations effectiveness
+	# Wall art (a share of the tariffs paid at one group of markets is refunded as credits;
+	# the tariff itself is not lowered; _mag is the cap in credits a month)
+	"cq_item_recruitment_print_mag": 2000, # cap: up to 2,000 credits a month
+	"cq_item_recruitment_print_pct": 25,   # 25% of tariffs paid at independent markets are refunded
+	"cq_item_path_triptych_mag": 2000,     # cap: up to 2,000 credits a month
+	"cq_item_path_triptych_pct": 40,       # 40% of tariffs paid at markets with a Luddic majority are refunded
+	"cq_item_kill_marks_mag": 3000,        # cap: up to 3,000 credits a month
+	"cq_item_kill_marks_pct": 25,          # 25% of tariffs paid at markets with a military base are refunded
+	"cq_item_warlord_banner_mag": 4000,    # cap: up to 4,000 credits a month
+	"cq_item_warlord_banner_pct": 40,      # 40% of tariffs paid at independent markets are refunded
+	"cq_item_xiv_pennant_mag": 5000,       # cap: up to 5,000 credits a month
+	"cq_item_xiv_pennant_pct": 50,         # 50% of tariffs paid at Hegemony markets are refunded
 
-	# Pet (crew losses / salvage spotting)
-	"cq_item_hull_rat_cage_mag": 10,        # -10% crew lost to hull damage (piloted)
-	"cq_item_grav_cat_mag": 15,        # -15% non-combat crew losses
-	"cq_item_cyber_parrot_mag": 15,    # -15% crew lost in combat (piloted)
-	"cq_item_agravifish_bowl_mag": 7,       # -7% overload duration, piloted
-	"cq_item_salvage_raven_mag": 20,   # +20% salvage resources (not rare items)
+	# Pet (a fleet effect that applies all the time)
+	"cq_item_hull_rat_cage_mag": 5,        # +5% post-battle salvage
+	"cq_item_grav_cat_mag": 12,            # +12% repair rate outside of combat
+	"cq_item_cyber_parrot_mag": 18,        # -18% combat readiness lost to star coronas and hyperspace storms
+	"cq_item_agravifish_bowl_mag": 6,      # cap: up to 6 fuel per light-year
+	"cq_item_agravifish_bowl_pct": 6,      # -6% fleet fuel use
+	"cq_item_salvage_raven_mag": 6,        # +6% salvaged resources, rare items included
 
-	# Plant (supply and fuel upkeep; percentages capped)
-	"cq_item_herb_rack_mag": 20,        # cap: up to -20 supplies/mo
-	"cq_item_herb_rack_pct": 8,         # -8% fleet supply use
-	"cq_item_antixenol_planter_mag": 5,  # +5% CR recovery rate, per member
-	"cq_item_prayer_garden_mag": 11,    # +11% maximum combat readiness of recovered ships
-	"cq_item_rose_bonsai_mag": 20,      # +20% maneuverability, piloted
-	"cq_item_reef_terrarium_mag": 25,   # cap: up to -25 supplies/mo
-	"cq_item_reef_terrarium_pct": 10,   # -10% fleet supply use
-	"cq_item_reef_terrarium_mag2": 5,   # cap: up to -5 fuel/mo
-	"cq_item_reef_terrarium_pct2": 8,   # -8% fleet fuel use
+	# Plant (crew, marines and combat readiness returned after a battle or a raid;
+	# for the returned kinds _mag is the cap in heads per battle or raid)
+	"cq_item_herb_rack_mag": 48,           # cap: up to 48 crew per battle in hyperspace
+	"cq_item_herb_rack_pct": 25,           # 25% of crew lost return to duty
+	"cq_item_antixenol_planter_mag": 10,   # cap: up to 10 marines per raid
+	"cq_item_antixenol_planter_pct": 12,   # 12% of marines lost in a raid return to duty
+	"cq_item_prayer_garden_mag": 35,       # the piloted ship regains 35% of the combat readiness a battle cost it
+	"cq_item_rose_bonsai_mag": 100,        # cap: up to 100 crew after a battle with none of your ships destroyed
+	"cq_item_rose_bonsai_pct": 25,         # 25% of crew lost return to duty
+	"cq_item_reef_terrarium_mag": 30,      # cap: up to 30 crew per battle
+	"cq_item_reef_terrarium_pct": 25,      # 25% of crew lost return to duty
 
-	# Desk (navigation / surveying)
-	"cq_item_chart_table_mag": 6,     # -6% terrain movement penalty
-	"cq_item_tripad_dock_mag": 10,    # -10% survey costs
-	"cq_item_ephemeris_mag": 15,      # +15% maneuverability, piloted (the helm checks it first)
-	"cq_item_slate_rack_mag": 7,      # -7% weapon recoil, piloted
-	"cq_item_survey_cache_mag": 20,   # -20% survey costs
+	# Desk (relationship with the contacts at a market docked at, or with its faction, every so many days)
+	"cq_item_chart_table_mag": 2,     # +2 relationship with a faction every 90 days, on docking at one of its markets
+	"cq_item_tripad_dock_mag": 4,     # +4 relationship with each contact every 30 days, on docking at their market
+	"cq_item_ephemeris_mag": 1,       # +1 maximum contacts
+	"cq_item_slate_rack_mag": 4,      # +4 relationship with each trade contact every 15 days, on docking at their market
+	"cq_item_survey_cache_mag": 4,    # +4 relationship with each trade contact every 10 days, on docking at their market
 
-	# Display case (post-battle salvage / recovered-ship condition)
-	"cq_item_medal_rack_mag": 5,       # +5% post-battle salvage
-	"cq_item_sample_case_mag": 8,      # +8% maximum hull of recovered ships
-	"cq_item_vambrace_fragment_mag": 12,        # +12% maximum hull of recovered ships
-	"cq_item_warlord_sidearm_mag": 12, # +12% maximum combat readiness of recovered ships
-	"cq_item_remnant_facet_mag": 8,    # +8% post-battle salvage
+	# Display case (the condition of recovered ships of one group)
+	"cq_item_medal_rack_mag": 50,        # recovered ships of the Low Tech design type come with 50 supplies, at most once every 30 days
+	"cq_item_sample_case_mag": 1,        # recovered destroyers have 1 fewer d-mod
+	"cq_item_vambrace_fragment_mag": 1,  # recovered capital ships have 1 fewer d-mod
+	"cq_item_warlord_sidearm_mag": 1,    # recovered civilian ships have 1 fewer d-mod
+	"cq_item_remnant_facet_mag": 1,      # ships recovered from derelicts have 1 fewer d-mod
 
-	# Rug (sensor profile / EMP taken / corona resistance)
-	"cq_item_deck_mat_mag": 5,       # -5% detected-at range
-	"cq_item_insulfiber_carpet_mag": 10,    # -10% detectability while running dark
-	"cq_item_kumari_rug_mag": 16,      # -16% EMP damage taken, piloted
-	"cq_item_deck_quilt_mag": 22,    # -22% CR lost to coronas and storms, per member
-	"cq_item_ash_silk_rug_mag": 30,  # -30% CR lost to coronas and storms, per member
+	# Rug (a fleet effect that follows how the fleet is travelling)
+	"cq_item_deck_mat_mag": 10,            # cap: up to 10 fuel per light-year, while Sustained Burn is active
+	"cq_item_deck_mat_pct": 10,            # -10% fleet fuel use
+	"cq_item_insulfiber_carpet_mag": 12,   # -12% detected-at range while moving slowly
+	"cq_item_kumari_rug_mag": 50,          # cap: up to 50 supplies a month, while Sustained Burn is active
+	"cq_item_kumari_rug_pct": 25,          # -25% fleet supply use
+	"cq_item_deck_quilt_mag": 37,          # -37% combat readiness lost to hyperspace storm strikes, per member
+	"cq_item_ash_silk_rug_mag": 25,        # +25% repair rate outside of combat while moving slowly
 
-	# Lighting (sensor range / watch quality)
-	"cq_item_lume_candles_mag": 5,   # +5% sensor range
-	"cq_item_glowpanel_mag": 6,      # cap: up to -6 fuel (a lower draw on the bus)
-	"cq_item_glowpanel_pct": 5,      # -5% fleet fuel use
-	"cq_item_desk_lamp_mag": 1,      # +1 to the "moving slowly" burn threshold
-	"cq_item_signal_lamp_mag": 8,    # -8% weapon recoil, piloted (the gunnery-drill lamp)
-	"cq_item_lumen_shard_mag": 10,   # +10% sensor range
+	# Lighting (a fleet or piloted-ship effect that follows what the ship shows)
+	"cq_item_lume_candles_mag": 50,  # cap: up to 50 supplies a month, in a star system with no market
+	"cq_item_lume_candles_pct": 25,  # -25% fleet supply use
+	"cq_item_glowpanel_mag": 12,     # -12% detected-at range for 2 days after docking
+	"cq_item_desk_lamp_mag": 1,      # +1 command point in a battle fought in a star system with no market
+	"cq_item_signal_lamp_mag": 7,    # +7% top speed, piloted, in a battle begun while Go Dark is active
+	"cq_item_lumen_shard_mag": 12,   # +12% sensor range while the transponder is off
 
-	# Galley nook (repair rate / own weapon and wing recovery)
-	"cq_item_caff_urn_mag": 10,        # +10% out-of-combat repair rate
-	"cq_item_prize_still_mag": 6,      # +6% chance to recover own weapons and wings
-	"cq_item_drinks_cabinet_mag": 1,   # +1 maximum contacts (a bottle from every port)
-	"cq_item_lobster_tank_mag": 4,     # +4% flux capacity, piloted (the upsized power trunk)
-	"cq_item_darjeeling_service_mag": 12,      # +12% out-of-combat repair rate
-	"cq_item_darjeeling_service_mag2": 5,      # +5% of hull/armor damage repaired instantly after battle
+	# Galley nook (units of one commodity added to the hold at month end)
+	"cq_item_caff_urn_mag": 40,            # +40 domestic goods each month
+	"cq_item_prize_still_mag": 80,         # +80 fuel each month
+	"cq_item_drinks_cabinet_mag": 30,      # +30 luxury goods each month
+	"cq_item_lobster_tank_mag": 40,        # +40 Volturnian lobster each month
+	"cq_item_darjeeling_service_mag": 45,  # +45 supplies each month
 
-	# Entertainment (officer experience / command point recovery / production planning)
-	"cq_item_songbook_chips_mag": 6,   # +6% officer experience gain
-	"cq_item_arms_catalog_mag": 10,    # +10% maximum monthly custom production
-	"cq_item_holo_chess_mag": 15,      # +15% command point recovery rate (the undefeated XO)
-	"cq_item_strategikon_mag": 20,     # +20% command point recovery rate
-	"cq_item_muse_cabinet_mag": 15,    # +15% officer experience gain
+	# Entertainment (experience per day, paid at month end)
+	"cq_item_songbook_chips_mag": 0.09, # marines gain 0.09% of their full experience per day: none to elite in 1,111 days, about 3 years
+	"cq_item_arms_catalog_mag": 225,    # officers below level 3 gain 225 experience per day
+	"cq_item_holo_chess_mag": 225,      # the two lowest-level officers each gain 225 experience per day
+	"cq_item_strategikon_mag": 225,     # the two highest-level officers who can still level up each gain 225 per day
+	"cq_item_muse_cabinet_mag": 225,    # every officer gains 225 experience per day
 
 	# The QUEST specials (granted once by the quest poll, never dropped).
-	"cq_item_guard_saber_mag": 10,        # -10% marine casualties
-	"cq_item_amber_motes_mag": 7,         # +7% top speed, piloted (drive-field motes)
-	"cq_item_janus_casing_mag": 45,       # -45% Emergency Burn CR cost
-	"cq_item_pilgrim_icon_mag": 10,       # +10% fuel salvaged
-	"cq_item_bornanew_reliquary_mag": 10, # -10% overload duration, piloted
-	"cq_item_rao_invitation_mag": 1,      # +1 maximum contacts
-	"cq_item_inert_trigger_mag": 22,      # -22% EMP damage taken (piloted)
-	"cq_item_kallichore_plate_mag": 1,    # +1 moving-slowly burn threshold (SILENCE)
-	"cq_item_kanta_marker_mag": 35,       # -35% Emergency Burn CR cost (the Den's roads)
-	"cq_item_survey_slab_mag": 4,         # +4% flux dissipation (piloted)
+	"cq_item_guard_saber_mag": 4000,      # cap: up to 4,000 credits a month
+	"cq_item_guard_saber_pct": 40,        # 40% of tariffs paid at markets of the faction whose commission you hold are refunded
+	"cq_item_amber_motes_mag": 50,        # -50% combat readiness cost of Emergency Burn while the transponder is off
+	"cq_item_janus_casing_mag": 1,        # recovered ships of the Midline design type have 1 fewer d-mod
+	"cq_item_pilgrim_icon_mag": 4000,     # cap: up to 4,000 credits a month
+	"cq_item_pilgrim_icon_pct": 60,       # 60% of tariffs paid at Luddic Church markets are refunded
+	"cq_item_bornanew_reliquary_mag": 1,   # recovered ships of the Low Tech design type have 1 fewer d-mod
+	"cq_item_rao_invitation_mag": 3000,   # cap: up to 3,000 credits a month
+	"cq_item_rao_invitation_pct": 50,     # 50% of tariffs paid at Persean League markets are refunded
+	"cq_item_inert_trigger_mag": 1,       # recovered ships of the High Tech design type have 1 fewer d-mod
+	"cq_item_kallichore_plate_mag": 2,    # +2 relationship with a faction every 90 days, on docking at one of its markets
+	"cq_item_kanta_marker_mag": 1,        # recovered ships of the Pirate design type have 1 fewer d-mod
+	"cq_item_survey_slab_mag": 4,         # +4 relationship with each military contact every 10 days, on docking at their market
 
 	# The remaining specials: 5 UNIQUE, 3 GUARANTEED, 4 THEMATIC.
-	"cq_item_megalobster_tank_mag": 15,   # -15% crew lost in combat (piloted)
-	"cq_item_megalobster_tank_mag2": 10,  # -10% non-combat crew losses
-	"cq_item_parade_standard_mag": 20,    # -20% crew lost to hull damage (piloted)
-	"cq_item_signet_case_mag": 20,        # +20% maximum monthly custom production
-	"cq_item_neural_soother_mag": 10,     # -10% CR degradation after peak (piloted)
-	"cq_item_reliquary_lamp_mag": 10,     # -10% detected-at range
-	"cq_item_tesseract_cluster_mag": 1,   # recovered ships have 1 fewer d-mod (integer-rounded)
-	"cq_item_chart_core_mag": 14,         # -14% terrain movement penalty
-	"cq_item_nexus_shard_mag": 12,        # +12% hull/armor damage repaired instantly after battle
-	"cq_item_sample_carousel_mag": 15,    # +15% salvage resources (not rare items)
-	"cq_item_lockbox_mag": 27,            # +27 effective marines for ground operations
-	"cq_item_bookends_mag": 6,            # +6% fuel salvaged (the assay reading)
-	"cq_item_vine_basket_mag": 15,        # -15% detectability while running dark
+	"cq_item_megalobster_tank_mag": 25,   # -25% combat readiness cost of Emergency Burn
+	"cq_item_parade_standard_mag": 4000,  # cap: up to 4,000 credits a month
+	"cq_item_parade_standard_pct": 40,    # 40% of tariffs paid at markets with heavy industry are refunded
+	"cq_item_signet_case_mag": 1,         # recovered cruisers have 1 fewer d-mod
+	"cq_item_neural_soother_mag": 400,    # you gain 400 experience per day
+	"cq_item_reliquary_lamp_mag": 25,     # -25% range at which the fleet is detected while Go Dark is active
+	"cq_item_tesseract_cluster_mag": 1,   # a recovered ship with 3 or more d-mods has 1 fewer
+	"cq_item_chart_core_mag": 1,          # +1 maximum contacts
+	"cq_item_chart_core_mag2": 5,         # a new contact starts with +5 relationship
+	"cq_item_nexus_shard_mag": 0.3,       # every month, a 30% chance that 1 d-mod is repaired on the most expensive ship
+	"cq_item_sample_carousel_mag": 200,   # ships recovered from derelicts come with 200 fuel, at most once every 30 days
+	"cq_item_lockbox_mag": 15,            # +15 recreational drugs each month
+	"cq_item_bookends_mag": 4,            # +4 relationship with each underworld contact every 20 days, on docking at their market
+	"cq_item_vine_basket_mag": 20,        # cap: up to 20 crew after a battle won
+	"cq_item_vine_basket_pct": 25,        # 25% of crew lost return to duty
 
 	# The unique home markets (one specific market stocks the item on the market
 	# channel's normal cadence and odds; owned = never stocked again, and the home's
@@ -388,7 +414,7 @@
 
 	# The quest-reward bindings: durable completion flag to item slug. The
 	# poll checks each flag in sector AND character memory (Kanta's lives in character data);
-	# Red Planet has no flag at all and is detected in code (PlanetaryShieldIntel DONE).
+	# Red Planet has no flag at all and is detected in code from the planet.
 	"cq_quest_rewards": {
 		"$sdtu_missionCompleted": "guard_saber",
 		"$defeatedZiggurat": "amber_motes",
@@ -402,34 +428,20 @@
 	},
 
 	# ============================================================
-	# MIGRATION MAP ONLY: [x, y, w, h] rects in the
-	# 1600x1000 frame, x and y from top-left. Read solely by the
-	# version-1 save migration, which places each old typed slot's
-	# occupant as a sticker at its anchor's top-left; nothing else
-	# consumes these, and the table is FROZEN at the two version-1
-	# styles (future styles ship no anchors).
-	# Measured against the shipped elevation backgrounds.
+	# Sticker size of each furnishing category, [width, height] in
+	# the 1600x1000 cabin frame. A furnishing's sticker is drawn at
+	# its category's size before the player scales it, so make each
+	# furnishing's sprite exactly that size.
 	# ============================================================
 
-	"cq_style_spacer_anchor_light":   [620, 15, 240, 170],
-	"cq_style_spacer_anchor_wall":    [300, 200, 260, 210],
-	"cq_style_spacer_anchor_display": [760, 200, 220, 260],
-	"cq_style_spacer_anchor_ent":     [1010, 180, 250, 200],
-	"cq_style_spacer_anchor_plant":   [250, 600, 150, 210],
-	"cq_style_spacer_anchor_galley":  [1350, 540, 220, 280],
-	"cq_style_spacer_anchor_bunk":    [440, 530, 480, 310],
-	"cq_style_spacer_anchor_desk":    [980, 520, 360, 270],
-	"cq_style_spacer_anchor_pet":     [1400, 840, 180, 150],
-	"cq_style_spacer_anchor_rug":     [920, 800, 430, 190],
-
-	"cq_style_tritach_anchor_light":   [640, 10, 240, 170],
-	"cq_style_tritach_anchor_wall":    [380, 190, 260, 210],
-	"cq_style_tritach_anchor_display": [700, 190, 220, 260],
-	"cq_style_tritach_anchor_ent":     [860, 470, 250, 200],
-	"cq_style_tritach_anchor_plant":   [600, 590, 150, 210],
-	"cq_style_tritach_anchor_galley":  [1380, 540, 220, 280],
-	"cq_style_tritach_anchor_bunk":    [90, 490, 480, 310],
-	"cq_style_tritach_anchor_desk":    [1000, 680, 360, 270],
-	"cq_style_tritach_anchor_pet":     [620, 830, 180, 150],
-	"cq_style_tritach_anchor_rug":     [100, 810, 430, 190],
+	"cq_sticker_size_light":   [240, 170],
+	"cq_sticker_size_wall":    [260, 210],
+	"cq_sticker_size_display": [220, 260],
+	"cq_sticker_size_ent":     [250, 200],
+	"cq_sticker_size_plant":   [150, 210],
+	"cq_sticker_size_galley":  [220, 280],
+	"cq_sticker_size_bunk":    [480, 310],
+	"cq_sticker_size_desk":    [360, 270],
+	"cq_sticker_size_pet":     [180, 150],
+	"cq_sticker_size_rug":     [430, 190],
 }
