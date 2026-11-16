@@ -1,3 +1,8 @@
+v2.0.1
+Save compatible. Can be added to existing saves.
+
+- Added a Survival Mode start that lets you choose your ships. This is completely unrelated to the rest of the mod FYI, I just already have 5 mods and that's enough to manage. This seemed like the least objectionable mod to shove this in.
+
 v2.0.0
 Not save compatible with previous versions of the mod. Can be added to existing saves.
 

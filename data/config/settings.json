@@ -1,4 +1,7 @@
 {
+	# Rule commands this mod adds to rules.csv (the new-game fleet builder).
+	"ruleCommandPackages":["cq.newgame"],
+
 	# ============================================================
 	# Captain's Quarters design-type lineage tint: a soft warm
 	# gold, cabin lamplight against the dark hull.
@@ -249,6 +252,13 @@
 	# Defaults for the LunaLib checkboxes of the same keys, read when LunaLib is not installed.
 	"cq_mgmt_intel_only": false,
 	"cq_survival_finds": true,
+	"cq_fleet_builder": true,
+
+	# The fleet builder's budgets in hull base value (LunaLib Int rows of the same keys).
+	# Defaults are vanilla's Survival envelope; the officer always costs 4,000 of the
+	# small-fleet budget. Read values are held to 10,000..1,000,000.
+	"cq_fleet_budget_one_ship": 40000,
+	"cq_fleet_budget_small_fleet": 44000,
 
 	# ============================================================
 	# Per-item magnitudes.

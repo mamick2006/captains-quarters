@@ -1,0 +1,8 @@
+id,trigger,conditions,script,text,options,notes
+# Survival Mode new game: the starting fleet builder (Captain's Quarters setting cq_fleet_builder),,,,,,
+cqFleetBuilderStart,AddNewGameChoices,"$extendedMode
+CqFleetBuilder enabled","SetTooltip cqFleetBuilder ""Choose your starting ships. Limited to be like mercenary and freelancer start (except with mod support).""",,"6:cqFleetBuilder:A captain, choosing your own starting ships (build your start)",
+cqFleetBuilderSel,NewGameOptionSelected,$option == cqFleetBuilder,CqFleetBuilder open,,,
+# Under Nexerelin (its rules replace the new-game choices): record the mode for its custom start list,,,,,,
+cqFleetBuilderNexMark,ExerelinNGCStep1,,CqFleetBuilder nexMark,,,
+cqFleetBuilderNexOpen,NewGameOptionSelected,$option == cqFleetBuilderNexOpen,CqFleetBuilder openNex,,,

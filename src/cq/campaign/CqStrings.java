@@ -31,6 +31,10 @@ public final class CqStrings {
     return get("cq_console", key);
   }
 
+  public static String fleet(String key) {
+    return get("cq_fleet", key);
+  }
+
   private static String get(String category, String key) {
     String s;
     try {

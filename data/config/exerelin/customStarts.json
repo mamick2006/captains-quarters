@@ -1,0 +1,14 @@
+{
+ "starts": [
+  {
+   "id": "cq_fleetBuilder",
+   "name": "Build your starting fleet (Survival)",
+   "difficulty": "Normal",
+   "desc": "Choose your starting ships instead of taking a preset fleet: one ship or up to three frigates, within what the game's own Survival starts could give you (plus mod support), damaged the same way. Survival Mode only.",
+   "className": "cq.nex.CqNexFleetStart",
+   "requiredModId": "nexerelin",
+   "randomSector": 0,
+   "factionId": "player"
+  }
+ ]
+}

@@ -7,6 +7,8 @@ import org.json.JSONArray;
 
 import com.fs.starfarer.api.Global;
 
+import cq.newgame.pure.CqStartRules;
+
 import lunalib.lunaSettings.LunaSettings;
 
 public class CqSettings {
@@ -164,6 +166,28 @@ public class CqSettings {
       }
     }
     return getFloat(key, fallback);
+  }
+
+  public static CqStartRules.Budgets fleetBudgets() {
+    return CqStartRules.Budgets.of(tunableNumber(CqStartRules.LONE_BUDGET_KEY),
+        tunableNumber(CqStartRules.SMALL_BUDGET_KEY));
+  }
+
+  private static Number tunableNumber(String key) {
+    if (lunaEnabled()) {
+      try {
+        Integer v = LunaSettings.getInt(MOD_ID, key);
+        if (v != null) {
+          return v;
+        }
+      } catch (Throwable t) {
+      }
+    }
+    if (Global.getSettings() == null) {
+      return null;
+    }
+    float v = Global.getSettings().optFloat(key, Float.NaN);
+    return Float.isNaN(v) ? null : Float.valueOf(v);
   }
 
   public static boolean tunableBool(String key, boolean fallback) {
